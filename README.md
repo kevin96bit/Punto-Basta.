@@ -2,4 +2,10 @@ Progetto demo React (Create React App) — e-commerce di esempio con Bootstrap e
 
 ## Note
 - Immagini demo prese da Picsum Photos.
-- Questo è un progetto demo: il pulsante "Aggiungi al carrello" non è collegato a logica persistente.
+- Aggiunta traduzione i18n
+- Aggiunto CAPTCHA "artigianale"
+- Aggiunto DOMPurify.sanitize
+- Aggiunto Favicon
+- Aggiunto "Slag" 
+- Ottimizzazione SEO
+
