@@ -1,0 +1,126 @@
+:root {
+  /* Palette rosa personalizzata */
+  --primary: #FF66B2;       /* Rosa acceso */
+  --light-primary: #FF99CC; /* Rosa chiaro */
+  --accent: #FFB3D9;        /* Rosa pastello */
+  --text-dark: #4B0082;     /* Indaco scuro */
+  --bg-light: #FFF0F5;      /* Lavanda chiara */
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color: var(--text-dark);
+  background-color: var(--bg-light);
+}
+
+/* Navbar custom */
+.navbar-custom {
+  background-color: var(--light-primary);
+}
+
+.navbar-custom .navbar-brand-custom {
+  color: var(--text-dark) !important;
+  font-size: 1.25rem;
+  line-height: 1;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-custom .nav-link {
+  color: var(--text-dark);
+}
+
+.navbar-custom .nav-link:hover {
+  color: var(--primary);
+}
+
+/* Icone social */
+.social-icon {
+  color: white;
+  margin-left: 8px;
+  transition: color 0.3s ease;
+}
+
+.social-icon:hover {
+  color: #C13584; /* hover rosa Instagram/TikTok */
+}
+
+/* Product card hover effect */
+.product-card {
+  transition: transform 200ms ease, box-shadow 200ms ease;
+  background-color: var(--bg-light);
+  box-shadow: 0 4px 10px rgba(255, 102, 178, 0.2); /* ombra base più visibile e rosa */
+}
+
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(255, 102, 178, 0.35); /* ombra hover più marcata */
+}
+
+/* 🔥 Forzatura per i bottoni rosa */
+button.btn.btn-primary,
+a.btn.btn-primary {
+  background-color: var(--light-primary) !important;
+  border-color: var(--light-primary) !important;
+  color: var(--bg-light) !important;
+}
+
+button.btn.btn-primary:hover,
+a.btn.btn-primary:hover {
+  background-color: #e0559e !important;
+  border-color: #e0559e !important;
+  color: var(--bg-light) !important;
+}
+
+/* Prezzo rosa personalizzato (anche se è un link) */
+.product-price,
+.product-price a,
+.product-price a:visited,
+.product-price a:hover {
+  color: var(--primary) !important; /* rosa acceso */
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  text-decoration: none !important;
+}
+
+/* Minor spacing tweaks */
+main {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+/* Footer */
+footer {
+  background: var(--light-primary);
+  color: var(--text-dark);
+}
+
+strong,
+h1,
+.card-title,
+.footer-text {
+  color: var(--text-dark) !important;
+}
+
+/* Badge personalizzati */
+.badge.new {
+  background-color: var(--accent); /* Rosa pastello */
+  color: var(--text-dark);          /* Testo scuro per contrasto */
+  font-weight: bold;
+  font-size: 0.85rem;
+}
+
+.badge.bestseller {
+  background-color: var(--primary); /* Rosa acceso */
+  color: #fff;                       /* Testo chiaro per contrasto */
+  font-weight: bold;
+  font-size: 0.85rem;
+}
+
+.badge.soldout {
+  background-color: var(--text-dark); /* Rosa acceso */
+  color: #fff7f7;                       /* Testo chiaro per contrasto */
+  font-weight: bold;
+  font-size: 0.85rem;
+}
