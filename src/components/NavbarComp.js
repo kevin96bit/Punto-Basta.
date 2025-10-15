@@ -3,17 +3,23 @@ import { Navbar, Nav, Container, Dropdown } from "react-bootstrap";
 import { NavLink, Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { FaInstagram } from "react-icons/fa";
-import { SiTiktok } from "react-icons/si"; // TikTok icon
+import { SiTiktok } from "react-icons/si";
 import "../styles.css";
 
 export default function NavbarComp() {
   const { t, i18n } = useTranslation();
   const [language, setLanguage] = useState(i18n.language.toUpperCase());
+  const [expanded, setExpanded] = useState(false); // controlla apertura/chiusura del menu
 
   const handleChangeLanguage = (lang) => {
     i18n.changeLanguage(lang);
     setLanguage(lang.toUpperCase());
     console.log(`Lingua selezionata: ${lang}`);
+    setExpanded(false); // ✅ chiude il menu dopo aver cambiato lingua
+  };
+
+  const handleNavClick = () => {
+    setExpanded(false); // ✅ chiude il menu dopo aver cliccato su un link
   };
 
   return (
@@ -23,17 +29,19 @@ export default function NavbarComp() {
       expand="lg"
       sticky="top"
       aria-label="Navigazione principale"
+      expanded={expanded}
+      onToggle={() => setExpanded(!expanded)}
     >
       <Container>
         {/* Brand con link alla home e social */}
         <Navbar.Brand className="d-flex align-items-center">
-          <Link 
-            to="/" 
-            className="navbar-brand-custom" 
+          <Link
+            to="/"
+            className="navbar-brand-custom"
             style={{ fontSize: "1.25rem", lineHeight: 1, textDecoration: "none", color: "var(--text-dark)" }}
+            onClick={handleNavClick}
           >
             Punto&Basta.
-            {/* Instagram */}
             <FaInstagram
               size={23}
               className="ms-2 social-icon"
@@ -45,7 +53,6 @@ export default function NavbarComp() {
                 window.open("https://www.instagram.com/puntoebasta93?igsh=MTc5bG5tYXJ3ZXBiMg==", "_blank");
               }}
             />
-            {/* TikTok */}
             <SiTiktok
               size={21}
               className="ms-2 social-icon"
@@ -64,13 +71,13 @@ export default function NavbarComp() {
         <Navbar.Toggle aria-controls="main-navbar" />
         <Navbar.Collapse id="main-navbar">
           <Nav className="ms-auto align-items-center">
-            <Nav.Link as={NavLink} to="/" end>
+            <Nav.Link as={NavLink} to="/" end onClick={handleNavClick}>
               {t("navbar.home")}
             </Nav.Link>
-            <Nav.Link as={NavLink} to="/chi-siamo">
+            <Nav.Link as={NavLink} to="/chi-siamo" onClick={handleNavClick}>
               {t("navbar.about")}
             </Nav.Link>
-            <Nav.Link as={NavLink} to="/contattaci">
+            <Nav.Link as={NavLink} to="/contattaci" onClick={handleNavClick}>
               {t("navbar.contact")}
             </Nav.Link>
 
