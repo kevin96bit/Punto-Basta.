@@ -38,7 +38,12 @@ export default function NavbarComp() {
           <Link
             to="/"
             className="navbar-brand-custom"
-            style={{ fontSize: "1.25rem", lineHeight: 1, textDecoration: "none", color: "var(--text-dark)" }}
+            style={{
+              fontSize: "1.25rem",
+              lineHeight: 1,
+              textDecoration: "none",
+              color: "var(--text-dark)",
+            }}
             onClick={handleNavClick}
           >
             Punto&Basta.
@@ -50,7 +55,10 @@ export default function NavbarComp() {
               onMouseLeave={(e) => (e.currentTarget.style.color = "white")}
               onClick={(e) => {
                 e.preventDefault();
-                window.open("https://www.instagram.com/puntoebasta93?igsh=MTc5bG5tYXJ3ZXBiMg==", "_blank");
+                window.open(
+                  "https://www.instagram.com/puntoebasta93?igsh=MTc5bG5tYXJ3ZXBiMg==",
+                  "_blank"
+                );
               }}
             />
             <SiTiktok
@@ -61,7 +69,10 @@ export default function NavbarComp() {
               onMouseLeave={(e) => (e.currentTarget.style.color = "white")}
               onClick={(e) => {
                 e.preventDefault();
-                window.open("https://www.tiktok.com/@mariaandriulo928?_t=ZN-90URmOp3XzX&_r=1", "_blank");
+                window.open(
+                  "https://www.tiktok.com/@mariaandriulo928?_t=ZN-90URmOp3XzX&_r=1",
+                  "_blank"
+                );
               }}
             />
           </Link>
@@ -79,6 +90,10 @@ export default function NavbarComp() {
             </Nav.Link>
             <Nav.Link as={NavLink} to="/contattaci" onClick={handleNavClick}>
               {t("navbar.contact")}
+            </Nav.Link>
+            {/* 🔒 Link alla Privacy Policy */}
+            <Nav.Link as={NavLink} to="/PrivacyPolicy" onClick={handleNavClick}>
+              Privacy Policy
             </Nav.Link>
 
             {/* Dropdown lingua */}

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Container, Form, Button, Alert, Row, Col } from "react-bootstrap";
+import { Container, Form, Button, Alert } from "react-bootstrap";
 import { Helmet } from "react-helmet";
-import { useTranslation } from "react-i18next";
+import { useTranslation, Trans } from "react-i18next";
 import { Link } from "react-router-dom";
 import DOMPurify from "dompurify";
 
@@ -9,10 +9,11 @@ export default function Contact() {
   const { t } = useTranslation();
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState(null);
-
-  // CAPTCHA
-  const [captcha, setCaptcha] = useState(Math.floor(Math.random() * 9000) + 1000);
+  const [captcha, setCaptcha] = useState(
+    Math.floor(Math.random() * 9000) + 1000
+  );
   const [captchaInput, setCaptchaInput] = useState("");
+  const [consent, setConsent] = useState(false);
 
   function handleChange(e) {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -30,10 +31,15 @@ export default function Contact() {
   async function handleSubmit(e) {
     e.preventDefault();
 
-    const cleanName = DOMPurify.sanitize(form.name, { ALLOWED_TAGS: [], ALLOWED_ATTR: [] }).trim();
-    const cleanEmail = DOMPurify.sanitize(form.email, { ALLOWED_TAGS: [], ALLOWED_ATTR: [] }).trim();
-    const cleanMessage = DOMPurify.sanitize(form.message, { ALLOWED_TAGS: [], ALLOWED_ATTR: [] }).trim();
-    const cleanCaptchaInput = DOMPurify.sanitize(captchaInput, { ALLOWED_TAGS: [], ALLOWED_ATTR: [] }).trim();
+    if (!consent) {
+      setStatus({ type: "danger", text: t("contact.errorAcceptConsent") });
+      return;
+    }
+
+    const cleanName = DOMPurify.sanitize(form.name).trim();
+    const cleanEmail = DOMPurify.sanitize(form.email).trim();
+    const cleanMessage = DOMPurify.sanitize(form.message).trim();
+    const cleanCaptchaInput = DOMPurify.sanitize(captchaInput).trim();
 
     if (!cleanName || !cleanEmail || !cleanMessage || !cleanCaptchaInput) {
       setStatus({ type: "danger", text: t("contact.fillAllFields") });
@@ -49,11 +55,16 @@ export default function Contact() {
       return;
     }
 
-    console.log("Sanitized form data:", { name: cleanName, email: cleanEmail, message: cleanMessage });
+    console.log("Sanitized form data:", {
+      name: cleanName,
+      email: cleanEmail,
+      message: cleanMessage,
+    });
 
     setStatus({ type: "success", text: t("contact.messageSent") });
     setForm({ name: "", email: "", message: "" });
     regenerateCaptcha();
+    setConsent(false);
   }
 
   return (
@@ -105,7 +116,14 @@ export default function Contact() {
 
         {/* CAPTCHA */}
         <Form.Group className="mb-3" style={{ textAlign: "center" }}>
-          <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "12px" }}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              gap: "12px",
+            }}
+          >
             <p
               style={{
                 color: "#4B0082",
@@ -113,7 +131,7 @@ export default function Contact() {
                 margin: 0,
                 fontSize: "1.5rem",
                 transition: "transform 0.2s, color 0.2s",
-                cursor: "pointer"
+                cursor: "pointer",
               }}
               onMouseEnter={(e) => (e.currentTarget.style.color = "#FF66B2")}
               onMouseLeave={(e) => (e.currentTarget.style.color = "#4B0082")}
@@ -167,27 +185,93 @@ export default function Contact() {
             placeholder={t("contact.captchaPlaceholder")}
           />
 
-          {/* Info CAPTCHA */}
-          <small style={{ display: "block", color: "#888", textAlign: "center" }}>
+          <small
+            style={{ display: "block", color: "#888", textAlign: "center" }}
+          >
             {t("contact.captchaInfo")}
           </small>
         </Form.Group>
 
-        <Row className="mt-3">
-          <Col>
-            <Button type="submit" variant="primary" aria-label={t("contact.send")}>
-              {t("contact.send")}
-            </Button>
-          </Col>
-          <Col className="text-end">
-            <Button variant="primary" as={Link} to="/">
-              {t("product.continueBrowsing", "Continua a guardare")}
-            </Button>
-          </Col>
-        </Row>
+        <Form.Group
+          controlId="privacyConsent"
+          className="mb-3"
+          style={{ textAlign: "center" }}
+        >
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              gap: "8px",
+            }}
+          >
+            {/* Checkbox con testo */}
+            <Form.Check
+              type="checkbox"
+              required
+              checked={consent}
+              onChange={(e) => setConsent(e.target.checked)}
+              label={t("contact.acceptConsent")}
+              style={{ margin: 0 }}
+            />
+
+            {/* Link separato */}
+            <Link
+              to="/PrivacyPolicy"
+              style={{ color: "#FF66B2", textDecoration: "underline" }}
+            >
+              {t("contact.acceptPrivacyLink", "Privacy Policy")}
+            </Link>
+          </div>
+        </Form.Group>
+
+        {/* Pulsante invio */}
+        <div className="text-center">
+          <Button
+            type="submit"
+            variant="primary"
+            style={{
+              backgroundColor: "#FF66B2",
+              borderColor: "#FF66B2",
+            }}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.backgroundColor = "#C13584")
+            }
+            onMouseLeave={(e) =>
+              (e.currentTarget.style.backgroundColor = "#FF66B2")
+            }
+          >
+            {t("contact.send")}
+          </Button>
+        </div>
       </Form>
 
-      {status && <Alert variant={status.type} className="mt-3">{status.text}</Alert>}
+      {/* Torna alla home centrato */}
+      <div className="text-center mt-4">
+        <Button
+          as={Link}
+          to="/"
+          variant="primary"
+          style={{
+            backgroundColor: "#FF66B2",
+            borderColor: "#FF66B2",
+          }}
+          onMouseEnter={(e) =>
+            (e.currentTarget.style.backgroundColor = "#C13584")
+          }
+          onMouseLeave={(e) =>
+            (e.currentTarget.style.backgroundColor = "#FF66B2")
+          }
+        >
+          {t("contact.backHome")}
+        </Button>
+      </div>
+
+      {status && (
+        <Alert variant={status.type} className="mt-3">
+          {status.text}
+        </Alert>
+      )}
     </Container>
   );
 }

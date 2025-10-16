@@ -6,6 +6,7 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import About from './pages/About';
 import Contact from './pages/Contact';
+import PrivacyPolicy from './pages/PrivacyPolicy';
 import ProductDetail from './pages/ProductDetail';
 import DisclaimerBanner from './components/DisclaimerBanner';
 import './i18n';
@@ -29,6 +30,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/chi-siamo" element={<About />} />
           <Route path="/contattaci" element={<Contact />} />
+          <Route path="/PrivacyPolicy" element={<PrivacyPolicy />} />
           {/* Aggiornato per usare lo slug SEO-friendly */}
           <Route path="/product/:slug" element={<ProductDetail />} />
           {/* Fallback per rotte non trovate */}
