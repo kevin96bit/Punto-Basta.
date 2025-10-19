@@ -8,11 +8,26 @@ export default function PrivacyPolicy() {
   const { t } = useTranslation();
 
   return (
-    <Container className="py-5">
+    <Container className="py-5 text-center">
       <Helmet>
         <title>{t("privacy.title")} — Punto&Basta</title>
         <meta name="description" content={t("contact.metaDescription")} />
       </Helmet>
+
+      {/* ✅ Logo centrato sopra al titolo */}
+      <div className="mb-2">
+        <img
+          src="/logo-light.png"
+          alt="Punto & Basta Logo"
+          style={{
+            width: "180px", // non troppo grande
+            maxWidth: "70%",
+            height: "auto",
+            display: "block",
+            margin: "0 auto 1rem auto",
+          }}
+        />
+      </div>
 
       <Card
         style={{
@@ -20,13 +35,14 @@ export default function PrivacyPolicy() {
           borderRadius: "12px",
           boxShadow: "0 4px 12px rgba(75, 0, 130, 0.15)",
           backgroundColor: "#fff",
+          textAlign: "left", // testo del contenuto allineato a sinistra
         }}
       >
         <Card.Body style={{ color: "#333", lineHeight: "1.7" }}>
-          <h1 style={{ color: "#4B0082", fontWeight: "bold" }}>
+          <h1 style={{ color: "#4B0082", fontWeight: "bold", textAlign: "center" }}>
             {t("privacy.title")}
           </h1>
-          <p style={{ color: "#888" }}>{t("privacy.updated")}</p>
+          <p style={{ color: "#888", textAlign: "center" }}>{t("privacy.updated")}</p>
 
           {Object.values(t("privacy.sections", { returnObjects: true })).map(
             (section, index) => {
@@ -69,18 +85,17 @@ export default function PrivacyPolicy() {
 
           {/* Bottone Torna alla Home centrato */}
           <div className="d-flex justify-content-center mt-4 mb-4">
-  <Button variant="primary" as={Link} to="/">
-    {t("product.continueBrowsing", "Continua a guardare")}
-  </Button>
-</div>
-
+            <Button variant="primary" as={Link} to="/">
+              {t("product.continueBrowsing", "Continua a guardare")}
+            </Button>
+          </div>
 
           {/* Copyright centrato */}
           <p
             className="text-center"
             style={{ color: "#4B0082", fontWeight: "bold", marginTop: "2rem" }}
           >
-            {t('footer.text', { year: new Date().getFullYear() })}
+            {t("footer.text", { year: new Date().getFullYear() })}
           </p>
         </Card.Body>
       </Card>
