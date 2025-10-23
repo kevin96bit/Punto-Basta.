@@ -4,7 +4,7 @@ import LanguageDetector from "i18next-browser-languagedetector";
 
 // Traduzioni
 const resources = {
-  // ITALIANO
+  // 🇮🇹 ITALIANO
   it: {
     translation: {
       navbar: {
@@ -23,6 +23,18 @@ const resources = {
         p3: "Il sito non raccoglie, memorizza né condivide dati personali dei visitatori.",
         button: "Ho capito",
       },
+      about: {
+        title: "Chi siamo",
+        metaDescription:
+          "Scopri la storia, la passione e i valori dietro il marchio Punto&Basta. Creazioni artigianali uniche e realizzate con amore.",
+        experienceTitle: "La nostra esperienza",
+        experienceText:
+          "Dietro ogni creazione c’è la passione di una ragazza che, nel tempo libero, ama perdersi tra fili colorati e nuove ispirazioni. Con pazienza e curiosità, trasforma un semplice filo in qualcosa di unico, esplorando forme, texture e combinazioni di colori sempre diverse. Ciò che è nato come un passatempo si è evoluto in una vera forma d’arte, guidata dal desiderio di dare vita a creazioni fatte a mano che trasmettano calore, autenticità e personalità.",
+        approachTitle: "Il mio approccio",
+        approachText:
+          "Il mio approccio è semplice: trasformare la passione per l’uncinetto in un percorso di scoperta continua, dove ogni punto è un gesto di pazienza e creatività. Amo prendermi il tempo necessario per scegliere i materiali giusti, curare i dettagli e dare vita a oggetti che uniscono estetica e significato. Credo che la vera bellezza risieda nelle piccole imperfezioni, perché raccontano la storia di qualcosa fatto davvero a mano.",
+        backHome: "Torna alla home",
+      },
       contact: {
         title: "Contattaci",
         subtitle: "Hai domande? Compila il modulo qui sotto.",
@@ -40,11 +52,11 @@ const resources = {
         captchaInfo:
           "Inserisci questo numero per confermare che non sei un robot.",
         invalidCaptcha: "Captcha non corretto",
-        //
         backHome: "Torna alla Home",
-        acceptConsent: "Ho letto e accetto", // testo vicino alla checkbox
-        acceptPrivacyLink: "Privacy Policy", // link a parte
-        errorAcceptConsent: "Per inviare il messaggio, è necessario confermare di aver letto e accettato la Privacy Policy",
+        acceptConsent: "Ho letto e accetto",
+        acceptPrivacyLink: "Privacy Policy",
+        errorAcceptConsent:
+          "Per inviare il messaggio, è necessario confermare di aver letto e accettato la Privacy Policy",
       },
       privacy: {
         title: "Privacy Policy",
@@ -121,7 +133,8 @@ const resources = {
       },
     },
   },
-  // INGLESE
+
+  // 🇬🇧 ENGLISH
   en: {
     translation: {
       navbar: {
@@ -139,6 +152,18 @@ const resources = {
         p3: "The site does not collect, store or share visitors' personal data.",
         button: "Got it",
       },
+      about: {
+        title: "About Us",
+        metaDescription:
+          "Discover the story, passion, and values behind Punto&Basta. Handmade creations crafted with care and love.",
+        experienceTitle: "Our Experience",
+        experienceText:
+          "Behind every creation lies the passion of a young woman who loves to explore colors and ideas in her free time. With patience and curiosity, she turns a simple thread into something unique, experimenting with shapes, textures, and colors. What began as a hobby has evolved into a true form of art, driven by the desire to create handmade pieces that convey warmth, authenticity, and personality.",
+        approachTitle: "My Approach",
+        approachText:
+          "My approach is simple: to turn my love for crochet into a continuous journey of creativity and discovery. I take time to choose the right materials, focus on the smallest details, and create pieces that combine beauty and meaning. I believe true beauty lies in small imperfections, as they tell the story of something genuinely handmade.",
+        backHome: "Back to Home",
+      },
       contact: {
         title: "Contact Us",
         subtitle: "Have questions? Fill out the form below.",
@@ -155,11 +180,11 @@ const resources = {
         captchaPlaceholder: "Enter number here",
         captchaInfo: "Enter this number to confirm you are not a bot.",
         invalidCaptcha: "Invalid captcha",
-        //
         backHome: "Back to Home",
         acceptConsent: "I have read and accept",
         acceptPrivacyLink: "Privacy Policy",
-        errorAcceptConsent: "To send the message, you must confirm that you have read and accepted the Privacy Policy",
+        errorAcceptConsent:
+          "To send the message, you must confirm that you have read and accepted the Privacy Policy",
       },
       privacy: {
         title: "Privacy Policy",
@@ -218,7 +243,8 @@ const resources = {
         notFoundTitle: "Product not found",
         notFoundText: "The product you are looking for does not exist.",
         goBack: "Go back",
-        seoNote: "Buy directly on Vinted through our showcase site.",
+        seoNote:
+          "Buy directly on Vinted through our showcase site.",
         image: "image",
         buyVinted: "Buy on Vinted",
         continueBrowsing: "Continue browsing",
@@ -235,7 +261,8 @@ const resources = {
       },
     },
   },
-  // FRANCESE
+
+  // 🇫🇷 FRANÇAIS
   fr: {
     translation: {
       navbar: {
@@ -254,6 +281,18 @@ const resources = {
         p3: "Le site ne collecte, ne stocke ni ne partage les données personnelles des visiteurs.",
         button: "Compris",
       },
+      about: {
+        title: "À propos",
+        metaDescription:
+          "Découvrez l’histoire, la passion et les valeurs derrière Punto&Basta. Des créations artisanales faites avec amour et soin.",
+        experienceTitle: "Notre expérience",
+        experienceText:
+          "Derrière chaque création se cache la passion d’une jeune femme qui aime explorer les fils et les couleurs pendant son temps libre. Avec patience et curiosité, elle transforme un simple fil en quelque chose d’unique, en explorant différentes formes, textures et combinaisons. Ce qui a commencé comme un passe-temps est devenu une véritable forme d’art, guidée par le désir de créer des pièces faites à la main qui transmettent chaleur, authenticité et personnalité.",
+        approachTitle: "Mon approche",
+        approachText:
+          "Mon approche est simple : transformer ma passion pour le crochet en un parcours de découverte et de créativité. Je prends le temps de choisir les bons matériaux, de soigner chaque détail et de créer des objets qui allient esthétique et sens. Je crois que la véritable beauté réside dans les petites imperfections, car elles racontent l’histoire d’un travail véritablement artisanal.",
+        backHome: "Retour à l’accueil",
+      },
       contact: {
         title: "Contactez-nous",
         subtitle: "Des questions ? Remplissez le formulaire ci-dessous.",
@@ -271,11 +310,11 @@ const resources = {
         captchaInfo:
           "Entrez ce numéro pour confirmer que vous n'êtes pas un robot.",
         invalidCaptcha: "Captcha invalide",
-        //
         backHome: "Retour à l'accueil",
         acceptConsent: "J'ai lu et j'accepte",
         acceptPrivacyLink: "Politique de confidentialité",
-        errorAcceptConsent: "Pour envoyer le message, vous devez confirmer que vous avez lu et accepté la Politique de confidentialité"
+        errorAcceptConsent:
+          "Pour envoyer le message, vous devez confirmer que vous avez lu et accepté la Politique de confidentialité",
       },
       privacy: {
         title: "Politique de confidentialité",
@@ -317,15 +356,18 @@ const resources = {
           },
           legalBasis: {
             title: "7. Base légale",
-            text: "Le traitement des données repose sur le consentement explicite de l'utilisateur, donné via la case à cocher dans le formulaire de contact.",
+            text:
+              "Le traitement des données repose sur le consentement explicite de l'utilisateur, donné via la case à cocher dans le formulaire de contact.",
           },
           cookies: {
             title: "8. Cookies",
-            text: "Ce site n'utilise pas de cookies de profilage ni d'outils de suivi. Les cookies techniques éventuels sont utilisés uniquement pour garantir le bon fonctionnement du site.",
+            text:
+              "Ce site n'utilise pas de cookies de profilage ni d'outils de suivi. Les cookies techniques éventuels sont utilisés uniquement pour garantir le bon fonctionnement du site.",
           },
           updates: {
             title: "9. Modifications de la présente politique",
-            text: "Cette politique de confidentialité peut être mise à jour périodiquement. Veuillez la consulter régulièrement pour rester informé de toute modification.",
+            text:
+              "Cette politique de confidentialité peut être mise à jour périodiquement. Veuillez la consulter régulièrement pour rester informé de toute modification.",
           },
           copyright: "Punto&Basta — Tous droits réservés © {{year}}",
         },
