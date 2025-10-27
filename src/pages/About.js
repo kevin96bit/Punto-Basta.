@@ -41,14 +41,16 @@ export default function About() {
       <Row className="align-items-center mb-5">
         <Col md={6} className="text-center mb-4 mb-md-0">
           <img
-            src="/logo-light.png"
+            src="/fili2.jpg"
             alt="Punto & Basta Logo"
             style={{
-              width: "300px",
+              width: "200vh",
               maxWidth: "70%",
               height: "auto",
               display: "block",
               margin: "0 auto 1rem auto",
+              borderRadius: "12px",
+              
             }}
           />
         </Col>
@@ -68,7 +70,10 @@ export default function About() {
             }}
           />
 
-          <p className="text-muted" style={{ lineHeight: "1.8", textAlign: "center" }}>
+          <p
+            className="text-muted"
+            style={{ lineHeight: "1.8", textAlign: "center" }}
+          >
             {t("about.experienceText")}
           </p>
         </Col>
@@ -91,21 +96,26 @@ export default function About() {
             }}
           />
 
-          <p className="text-muted" style={{ lineHeight: "1.8", textAlign: "center" }}>
+          <p
+            className="text-muted"
+            style={{ lineHeight: "1.8", textAlign: "center" }}
+          >
             {t("about.approachText")}
           </p>
         </Col>
 
         <Col md={6} className="text-center order-1 order-md-2 mb-4 mb-md-0">
           <img
-            src="/logo-light.png"
+            src="/fili-uncinetto.jpg"
             alt="Punto & Basta Logo"
             style={{
-              width: "300px",
+              width: "400px",
               maxWidth: "70%",
               height: "auto",
               display: "block",
               margin: "0 auto 1rem auto",
+              borderRadius: "12px",
+              boxShadow: "0 4px 12px rgba(75, 0, 130, 0.2)", // ombra leggera
             }}
           />
         </Col>
@@ -122,8 +132,12 @@ export default function About() {
             padding: "10px 24px",
             borderRadius: "8px",
           }}
-          onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#C13584")}
-          onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#FF66B2")}
+          onMouseEnter={(e) =>
+            (e.currentTarget.style.backgroundColor = "#C13584")
+          }
+          onMouseLeave={(e) =>
+            (e.currentTarget.style.backgroundColor = "#FF66B2")
+          }
         >
           {t("about.backHome")}
         </Button>

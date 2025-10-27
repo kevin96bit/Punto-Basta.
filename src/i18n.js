@@ -15,7 +15,7 @@ const resources = {
       },
       welcome: "Benvenuto nel nostro shop",
       discover:
-        "Scopri i nostri prodotti demo. Clicca su una card per i dettagli.",
+        "Scopri i nostri prodotti. Clicca su una card per i dettagli.",
       disclaimer: {
         title: "Nota importante",
         p1: "Questo sito funge da vetrina dei prodotti. Tutte le transazioni avvengono direttamente su Vinted.",
@@ -48,9 +48,9 @@ const resources = {
           "Hai domande o richieste sui nostri prodotti artigianali? Compila il modulo per contattarci direttamente.",
         enterCaptcha: "Inserisci il numero:",
         regenerate: "Rigenera",
-        captchaPlaceholder: "Inserisci numero qui",
+        captchaPlaceholder: "Inserisci i caratteri qui",
         captchaInfo:
-          "Inserisci questo numero per confermare che non sei un robot.",
+          "Inserisci questi caratteri per confermare che non sei un robot.",
         invalidCaptcha: "Captcha non corretto",
         backHome: "Torna alla Home",
         acceptConsent: "Ho letto e accetto",
@@ -64,7 +64,7 @@ const resources = {
         sections: {
           owner: {
             title: "1. Titolare del trattamento",
-            text: "Il titolare del trattamento dei dati è Punto&Basta. Per qualsiasi richiesta o chiarimento puoi contattare l’indirizzo email: info@puntobasta.com",
+            text: "Il titolare del trattamento dei dati è Punto&Basta. Per qualsiasi richiesta o chiarimento puoi contattare l’indirizzo email: punto.e.basta93@gmail.com",
           },
           data: {
             title: "2. Tipologia di dati raccolti",
@@ -94,7 +94,7 @@ const resources = {
               "Revocare il consenso in qualsiasi momento",
             ],
             contact:
-              "Per esercitare tali diritti, puoi scrivere a: info@puntobasta.com",
+              "Per esercitare tali diritti, puoi scrivere a: ",
           },
           legalBasis: {
             title: "7. Base giuridica del trattamento",
@@ -144,7 +144,7 @@ const resources = {
         privacy: "Privacy Policy",
       },
       welcome: "Welcome to our shop",
-      discover: "Discover our demo products. Click on a card for details.",
+      discover: "Discover our products. Click on a card for details.",
       disclaimer: {
         title: "Important Notice",
         p1: "This website serves as a showcase for products. All transactions take place directly on Vinted.",
@@ -177,8 +177,8 @@ const resources = {
           "Have questions or requests about our handmade products? Fill out the form to contact us directly.",
         enterCaptcha: "Enter the number:",
         regenerate: "Regenerate",
-        captchaPlaceholder: "Enter number here",
-        captchaInfo: "Enter this number to confirm you are not a bot.",
+        captchaPlaceholder: "Enter the characters here",
+        captchaInfo: "Enter these characters to confirm that you are not a robot.",
         invalidCaptcha: "Invalid captcha",
         backHome: "Back to Home",
         acceptConsent: "I have read and accept",
@@ -192,7 +192,7 @@ const resources = {
         sections: {
           owner: {
             title: "1. Data Controller",
-            text: "The data controller is Punto&Basta. For any requests or clarifications, you can contact: info@puntobasta.com",
+            text: "The data controller is Punto&Basta. For any requests or clarifications, you can contact: punto.e.basta93@gmail.com",
           },
           data: {
             title: "2. Data Collected",
@@ -222,7 +222,7 @@ const resources = {
               "Withdraw consent at any time",
             ],
             contact:
-              "To exercise these rights, you can contact: info@puntobasta.com",
+              "To exercise these rights, you can contact: ",
           },
           legalBasis: {
             title: "7. Legal Basis",
@@ -273,7 +273,7 @@ const resources = {
       },
       welcome: "Bienvenue dans notre boutique",
       discover:
-        "Découvrez nos produits de démonstration. Cliquez sur une carte pour les détails.",
+        "Découvrez nos produits. Cliquez sur une carte pour les détails.",
       disclaimer: {
         title: "Avis important",
         p1: "Ce site sert de vitrine pour les produits. Toutes les transactions se font directement sur Vinted.",
@@ -306,9 +306,9 @@ const resources = {
           "Vous avez des questions ou des demandes concernant nos produits artisanaux ? Remplissez le formulaire pour nous contacter directement.",
         enterCaptcha: "Entrez le numéro :",
         regenerate: "Régénérer",
-        captchaPlaceholder: "Entrez le numéro ici",
+        captchaPlaceholder: "Entrez les caractères ici",
         captchaInfo:
-          "Entrez ce numéro pour confirmer que vous n'êtes pas un robot.",
+          "Entrez ces caractères pour confirmer que vous n'êtes pas un robot.",
         invalidCaptcha: "Captcha invalide",
         backHome: "Retour à l'accueil",
         acceptConsent: "J'ai lu et j'accepte",
@@ -322,7 +322,7 @@ const resources = {
         sections: {
           owner: {
             title: "1. Responsable du traitement",
-            text: "Le responsable du traitement des données est Punto&Basta. Pour toute demande ou clarification, vous pouvez contacter : info@puntobasta.com",
+            text: "Le responsable du traitement des données est Punto&Basta. Pour toute demande ou clarification, vous pouvez contacter : punto.e.basta93@gmail.com",
           },
           data: {
             title: "2. Données collectées",
@@ -352,7 +352,7 @@ const resources = {
               "Retirer leur consentement à tout moment",
             ],
             contact:
-              "Pour exercer ces droits, vous pouvez écrire à : info@puntobasta.com",
+              "Pour exercer ces droits, vous pouvez écrire à : ",
           },
           legalBasis: {
             title: "7. Base légale",

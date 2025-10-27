@@ -10,10 +10,31 @@ export default function Contact() {
   const { t } = useTranslation();
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState(null);
-  const [captcha, setCaptcha] = useState(Math.floor(Math.random() * 9000) + 1000);
-  const [captchaInput, setCaptchaInput] = useState("");
   const [consent, setConsent] = useState(false);
   const [isSending, setIsSending] = useState(false);
+
+  // 🔹 CAPTCHA: immagini e codici
+  const [captchaIndex, setCaptchaIndex] = useState(Math.floor(Math.random() * 10) + 1);
+  const [captchaInput, setCaptchaInput] = useState("");
+
+  const captchaCodes = {
+    1: "3QEC4",
+    2: "FB7S5",
+    3: "ZP8EW",
+    4: "8P5NV",
+    5: "Q1NZV",
+    6: "T3HV3",
+    7: "RXDS6",
+    8: "PILSI",
+    9: "4IRLV",
+    10: "W1PE4",
+  };
+
+  const regenerateCaptcha = () => {
+    const newIndex = Math.floor(Math.random() * 10) + 1;
+    setCaptchaIndex(newIndex);
+    setCaptchaInput("");
+  };
 
   const SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID;
   const TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
@@ -26,11 +47,6 @@ export default function Contact() {
   function isValidEmail(email) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   }
-
-  const regenerateCaptcha = () => {
-    setCaptcha(Math.floor(Math.random() * 9000) + 1000);
-    setCaptchaInput("");
-  };
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -53,7 +69,7 @@ export default function Contact() {
       setStatus({ type: "danger", text: t("contact.invalidEmail") });
       return;
     }
-    if (parseInt(cleanCaptchaInput) !== captcha) {
+    if (cleanCaptchaInput.toUpperCase() !== captchaCodes[captchaIndex]) {
       setStatus({ type: "danger", text: t("contact.invalidCaptcha") });
       regenerateCaptcha();
       return;
@@ -132,78 +148,60 @@ export default function Contact() {
           />
         </Form.Group>
 
-        {/* CAPTCHA */}
+        {/* CAPTCHA con immagini */}
         <Form.Group className="mb-3" style={{ textAlign: "center" }}>
           <div
             style={{
               display: "flex",
-              justifyContent: "center",
+              flexDirection: "column",
               alignItems: "center",
-              gap: "12px",
+              gap: "10px",
             }}
           >
-            <p
+            <img
+              src={`/captcha${captchaIndex}.png`}
+              alt="Captcha"
               style={{
-                color: "#4B0082",
-                fontWeight: "bold",
-                margin: 0,
-                fontSize: "1.5rem",
-                transition: "transform 0.2s, color 0.2s",
-                cursor: "pointer",
+                width: "220px",
+                height: "80px",
+                objectFit: "contain",
+                border: "2px solid #FF66B2",
+                borderRadius: "10px",
+                boxShadow: "0 4px 10px rgba(255, 102, 178, 0.3)",
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = "#FF66B2")}
-              onMouseLeave={(e) => (e.currentTarget.style.color = "#4B0082")}
-            >
-              {t("contact.enterCaptcha")}{" "}
-              <span
-                style={{
-                  fontSize: "2rem",
-                  fontWeight: "bold",
-                  display: "inline-block",
-                  animation: "bounce 1s infinite",
-                }}
-              >
-                {captcha}
-              </span>
-            </p>
+            />
+
+            <Form.Control
+              value={captchaInput}
+              onChange={(e) => setCaptchaInput(e.target.value)}
+              placeholder={t("contact.captchaPlaceholder")}
+              style={{
+                width: "200px",
+                textAlign: "center",
+                borderColor: "#FF66B2",
+                marginTop: "8px",
+                borderRadius: "6px",
+              }}
+            />
 
             <Button
+              variant="outline"
               onClick={regenerateCaptcha}
               style={{
+                backgroundColor: "transparent",
                 borderColor: "#FF66B2",
                 color: "#FF66B2",
-                backgroundColor: "transparent",
-                height: "48px",
-                transition: "color 0.2s",
+                fontWeight: "500",
+                marginTop: "8px",
               }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.color = "#C13584";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.color = "#FF66B2";
-              }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = "#C13584")}
+              onMouseLeave={(e) => (e.currentTarget.style.color = "#FF66B2")}
             >
               {t("contact.regenerate")}
             </Button>
+
+            <small style={{ color: "#888" }}>{t("contact.captchaInfo")}</small>
           </div>
-
-          <Form.Control
-            value={captchaInput}
-            onChange={(e) => setCaptchaInput(e.target.value)}
-            style={{
-              borderColor: "#FF66B2",
-              borderRadius: "4px",
-              padding: "4px",
-              margin: "12px auto 4px auto",
-              width: "200px",
-              textAlign: "center",
-            }}
-            placeholder={t("contact.captchaPlaceholder")}
-          />
-
-          <small style={{ display: "block", color: "#888", textAlign: "center" }}>
-            {t("contact.captchaInfo")}
-          </small>
         </Form.Group>
 
         {/* Privacy */}
@@ -233,7 +231,7 @@ export default function Contact() {
           </div>
         </Form.Group>
 
-        {/* Pulsanti invio e torna alla home vicini */}
+        {/* Pulsanti invio e torna alla home */}
         <div
           className="mt-4"
           style={{
@@ -279,24 +277,24 @@ export default function Contact() {
 
           {/* Pulsante torna alla home */}
           <Button
-  as={Link}
-  to="/"
-  variant="primary"
-  style={{
-    backgroundColor: "#FF66B2",
-    borderColor: "#FF66B2",
-    width: "150px",
-    height: "48px",
-    fontWeight: "bold",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-  }}
-  onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#C13584")}
-  onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#FF66B2")}
->
-  {t("contact.backHome")}
-</Button>
+            as={Link}
+            to="/"
+            variant="primary"
+            style={{
+              backgroundColor: "#FF66B2",
+              borderColor: "#FF66B2",
+              width: "150px",
+              height: "48px",
+              fontWeight: "bold",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#C13584")}
+            onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#FF66B2")}
+          >
+            {t("contact.backHome")}
+          </Button>
         </div>
 
         <style>

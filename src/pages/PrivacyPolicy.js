@@ -60,12 +60,12 @@ export default function PrivacyPolicy() {
                     </ul>
                     {section.contact && (
                       <p>
-                        {section.contact.split("info@puntobasta.com")[0]}
+                        {section.contact.split("punto.e.basta93@gmail.com")[0]}
                         <a
-                          href="mailto:info@puntobasta.com"
+                          href="mailto:punto.e.basta93@gmail.com"
                           style={{ color: "#FF66B2" }}
                         >
-                          info@puntobasta.com
+                          punto.e.basta93@gmail.com
                         </a>
                       </p>
                     )}
