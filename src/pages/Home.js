@@ -1,32 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import products from "../data/products";
+import useProducts from "../data/products";
 import ProductCard from "../components/ProductCard";
 import { Helmet } from "react-helmet";
 import { useTranslation } from "react-i18next";
 
 export default function Home() {
   const { t, i18n } = useTranslation();
-  const [langChanged, setLangChanged] = useState(0);
+  const products = useProducts();
 
-  // Aggiorna lo stato ogni volta che cambia lingua per refresh visivo
-  useEffect(() => {
-    const handleLanguageChange = () => setLangChanged((prev) => prev + 1);
-    i18n.on("languageChanged", handleLanguageChange);
-    return () => {
-      i18n.off("languageChanged", handleLanguageChange);
-    };
-  }, [i18n]);
 
   return (
     <Container className="py-4">
-      {/* ✅ SEO con Helmet */}
       <Helmet>
         <title>{t("welcome")} — Punto&Basta</title>
         <meta name="description" content={t("discover")} />
       </Helmet>
 
-      {/* ✅ Logo centrato orizzontalmente */}
       <div className="mb-1">
         <img
           src="/logo-light.png"
@@ -36,7 +26,7 @@ export default function Home() {
             maxWidth: "80%",
             height: "auto",
             display: "block",
-            margin: "0 auto 1rem auto", // ← centrato orizzontalmente
+            margin: "0 auto 1rem auto",
           }}
         />
       </div>

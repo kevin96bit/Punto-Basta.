@@ -28,11 +28,11 @@ export default function ProductCard({ product }) {
      Per coinvolgere più prodotti basta aggiungere || product.id === <ID>
 ------------------------------- */}
       
-{/* {(product.id === 3 || product.id === 4) && (
+{(product.id === 5 || product.id === 8) && (
   <span className="badge bestseller position-absolute top-0 start-0 m-2">
     BESTSELLER
   </span>
-)} */}
+)}
 
 {/* ------------------------------
      Banner condizionale per prodotti speciali "SOLD OUT"

@@ -1,28 +1,36 @@
-import React, { useState } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
-import { Container, Row, Col, Image, Button, ListGroup } from 'react-bootstrap';
-import Zoom from 'react-medium-image-zoom';
-import 'react-medium-image-zoom/dist/styles.css';
-import { Helmet } from 'react-helmet';
-import { useTranslation } from 'react-i18next';
+import React, { useState } from "react";
+import { useParams, Link, useNavigate } from "react-router-dom";
+import { Container, Row, Col, Image, Button, ListGroup } from "react-bootstrap";
+import Zoom from "react-medium-image-zoom";
+import "react-medium-image-zoom/dist/styles.css";
+import { Helmet } from "react-helmet";
+import { useTranslation } from "react-i18next";
 
-import products from '../data/products';
+import useProducts from "../data/products"; // ✅ import corretto
 
 export default function ProductDetail() {
   const { t } = useTranslation();
-  const { slug } = useParams(); // ✅ Usare lo slug
+  const { slug } = useParams();
   const navigate = useNavigate();
+  const products = useProducts(); // ✅ va QUI, dentro il componente
 
-  const product = products.find(p => p.slug === slug); // ✅ Trova prodotto tramite slug
-  const [mainImage, setMainImage] = useState(product?.images?.[0] || product?.img);
+  const product = products.find((p) => p.slug === slug);
+  const [mainImage, setMainImage] = useState(
+    product?.images?.[0] || product?.img
+  );
 
   if (!product) {
     return (
       <Container className="py-4">
-        <h2>{t('product.notFoundTitle', 'Prodotto non trovato')}</h2>
-        <p>{t('product.notFoundText', 'Il prodotto che stai cercando non esiste.')}</p>
+        <h2>{t("product.notFoundTitle", "Prodotto non trovato")}</h2>
+        <p>
+          {t(
+            "product.notFoundText",
+            "Il prodotto che stai cercando non esiste."
+          )}
+        </p>
         <Button variant="secondary" onClick={() => navigate(-1)}>
-          {t('product.goBack', 'Torna indietro')}
+          {t("product.goBack", "Torna indietro")}
         </Button>
       </Container>
     );
@@ -30,12 +38,14 @@ export default function ProductDetail() {
 
   return (
     <Container className="py-4">
-      {/* SEO dinamico */}
       <Helmet>
         <title>{product.title} — Punto&Basta</title>
         <meta
           name="description"
-          content={`${product.title}: ${product.shortDesc} ${t('product.seoNote', 'Acquista direttamente su Vinted tramite il nostro sito vetrina.')}`}
+          content={`${product.title}: ${product.shortDesc} ${t(
+            "product.seoNote",
+            "Acquista direttamente su Vinted tramite il nostro sito vetrina."
+          )}`}
         />
       </Helmet>
 
@@ -52,9 +62,16 @@ export default function ProductDetail() {
                   key={idx}
                   src={src}
                   thumbnail
-                  style={{ width: 80, height: 80, objectFit: 'cover', cursor: 'pointer' }}
+                  style={{
+                    width: 80,
+                    height: 80,
+                    objectFit: "cover",
+                    cursor: "pointer",
+                  }}
                   onClick={() => setMainImage(src)}
-                  alt={`${product.title} - ${t('product.image', 'immagine')} ${idx + 1}`}
+                  alt={`${product.title} - ${t("product.image", "immagine")} ${
+                    idx + 1
+                  }`}
                 />
               ))}
             </div>
@@ -68,19 +85,30 @@ export default function ProductDetail() {
 
           <ListGroup className="mb-3">
             {Object.entries(product.specs || {}).map(([key, value]) => (
-              <ListGroup.Item key={key} className="d-flex justify-content-between align-items-center">
-                <strong>{t(`specs.${key}`, key)}</strong> {/* traduzione della chiave */}
+              <ListGroup.Item
+                key={key}
+                className="d-flex justify-content-between align-items-center"
+              >
+                <strong>{t(`specs.${key}`, key)}</strong>
                 <span>{value}</span>
               </ListGroup.Item>
             ))}
           </ListGroup>
 
           <div className="d-flex gap-2">
-            <Button variant="primary" onClick={() => window.open('https://www.vinted.it', '_blank')}>
-              {t('product.buyVinted', 'Acquista su Vinted')}
+            <Button
+              variant="primary"
+              onClick={() =>
+                window.open(
+                  "https://www.vinted.it/member/69734373-mariaandriulo",
+                  "_blank"
+                )
+              }
+            >
+              {t("product.buyVinted", "Acquista su Vinted")}
             </Button>
             <Button variant="primary" as={Link} to="/">
-              {t('product.continueBrowsing', 'Continua a guardare')}
+              {t("product.continueBrowsing", "Continua a guardare")}
             </Button>
           </div>
         </Col>
