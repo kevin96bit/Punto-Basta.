@@ -40,11 +40,11 @@ export default function ProductCard({ product }) {
      Per coinvolgere più prodotti basta aggiungere || product.id === <ID>
 ------------------------------- */}
       
-{/* {(product.id === 5 || product.id === 6) && (
+{(product.id === 1) && (
   <span className="badge soldout position-absolute top-0 start-0 m-2">
     SOLD OUT
   </span>
-)} */}
+)}
 
 
       {/* Link con slug per SEO */}
